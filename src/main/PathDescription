@@ -1,0 +1,12 @@
+jizhang1.1
+    | src
+        | main
+            | java
+                | com
+                    | zili
+                        | myProject  代码主要路径
+                            | domain 实体类
+                            | service
+                            | controller
+            | resources 存放配置文件
+        | test 测试程序
