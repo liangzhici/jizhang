@@ -19,6 +19,7 @@
 	</properties>
 
 	<dependencies>
+		<!--SpringBoot 项目默认 start-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -29,16 +30,36 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!--SpringBoot 项目默认 end-->
 
+		<!--web项目 start-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<!--web项目 end-->
 
+		<!--thymeleaf前端模板 start-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+		<!--thymeleaf前端模板 end-->
+
+		<!--Spring Data JPA  start-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<!--Spring Data JPA  end-->
+
+		<!--Mysql Database  start-->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<!--Mysql Database  end-->
+
 
 	</dependencies>
 
