@@ -32,33 +32,35 @@
 		</dependency>
 		<!--SpringBoot 项目默认 end-->
 
-		<!--web项目 start-->
+		<!--web-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<!--web项目 end-->
 
-		<!--thymeleaf前端模板 start-->
+		<!--thymeleaf前端模板 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-		<!--thymeleaf前端模板 end-->
 
-		<!--Spring Data JPA  start-->
+		<!--Spring Data JPA  -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		<!--Spring Data JPA  end-->
 
-		<!--Mysql Database  start-->
+		<!--Mysql Database -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-		<!--Mysql Database  end-->
+
+		<!-- spring-jdbc相关依赖 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
 
 
 	</dependencies>
