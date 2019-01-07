@@ -13,4 +13,10 @@ public class IndexController {
         map.put("name", name);
         return "index";
     }
+
+    @RequestMapping(value = "/dream",method = RequestMethod.GET)
+    public String dream(){
+        return "dream/dream";
+    }
+
 }

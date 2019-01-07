@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../dream/dream.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        body{
+            background-image: linear-gradient(270deg, rgba(178, 165, 63, 0.6), rgba(78, 21, 11, 0.42));
+        }
+        .divButton{
+            border: 0 solid saddlebrown;
+            width: 500px;
+            height: 57px;
+            margin: 200px auto 50px;
+        }
+        #button1{
+            margin-left:140px;
+        }
+        .button{
+            width: 180px;
+            height:55px;
+            background: dodgerblue;
+            line-height: 55px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 18px;
+            float: left;
+            border-radius: 5px;
+        }
+        .button:hover{
+            background: #1b72d3;
+        }
+        .divCon{
+            background-image: linear-gradient(0deg, rgba(250, 235, 215, 0.25), rgba(250, 235, 215, 0.28));
+            width: 570px;
+            height: 150px;
+            margin: 0 auto;
+            border-radius: 5px;
+            padding: 25px;
+            display: none;
+        }
+        .ulCon{
+            border:0 solid slateblue;
+            width: 490px;
+            height: 40px;
+            margin: 0 auto;
+        }
+        .ulCon li{
+            border: 0 dashed red;
+            width: 40px;height: 40px;
+            float: left;
+            margin-right: 30px;
+            border-radius: 20px;
+            background: #882e1c;
+            color: #ffc771;
+            line-height: 40px;
+            text-align: center;
+        }
+        .copy{
+            width: 120px;
+            height: 30px;
+            background: #0dbd9b;
+            line-height: 30px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 3px;
+            margin: 30px auto;
+        }
+        .copy:hover{
+            background: #0b9278;
+        }
+        #millDiv{
+            border: 0 solid royalblue;
+            width: 404px;
+            height: 60px;
+            margin: 220px auto -200px;
+        }
+        #mill{
+            width:400px;
+        }
+        .white{
+            color:#fff;
+        }
+        .yc{
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+    </style>
+</head>
+<body>
+    <div id="millDiv" onclick="mill()">
+        <div class="button" id="mill">
+            <span class="white">Primary</span>
+        </div>
+    </div>
+    <div style="display: none;" id="content">
+        <div class="divButton">
+            <div class="button" id="button0" onclick="dreamStart(0)">
+                <span class="white">双色球</span>
+            </div>
+            <div class="button" id="button1" onclick="dreamStart(1)">
+                <span class="white">大乐透</span>
+            </div>
+        </div>
+        <div class="divCon">
+            <ul class="ulCon">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div class="copy" onclick="copyClick()">
+                复制
+            </div>
+            <input type="text" id="copyCon" style="display: none;">
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../dream/dream.js"></script>
+<script type="text/javascript">
+    $('.ulCon li:last').css({'margin-right':0});
+    $('.ulCon li:first').css({'margin-left':'15px'});
+    function mill() {
+        $('#mill').text('请稍等,正在生成');
+        setTimeout(mill2,3000);
+    }
+    function mill2(){
+        $('#mill').hide();
+        $('#content').show();
+    }
+    var type;
+    function dreamStart(math){
+        $('.divCon').hide();
+        $('#button' + math).text('请稍等,正在生成');
+        type = math;
+        setTimeout(dream,3000);
+    }
+    var arr = [];
+    function dream(){
+        $('.divCon').show();
+        $('#copyCon').hide();
+        var arr1 = [];
+        switch (type){
+            case 0:
+                $('#button0').text('双色球');
+                $('.ulCon li').eq(5).css("background-color","#882e1c");
+                $('.ulCon li').eq(6).css("background-color","#1e4699");
+                arr = createRandom(6,1,33);
+                arr1 = createRandom(1,1,16);
+                arr = arr.concat(arr1);
+                toValue(arr,arr.length);
+                break;
+            case 1:
+                $('#button1').text('大乐透');
+                $('.ulCon li').eq(5).css("background-color","#1e4699");
+                $('.ulCon li').eq(6).css("background-color","#1e4699");
+                arr = createRandom(5,1,35);
+                arr1 = createRandom(2,1,12);
+                arr = arr.concat(arr1);
+                toValue(arr,arr.length);
+                break;
+            default:
+                break;
+        }
+    }
+    function createRandom(num , down , up) {
+        var arr=[];
+        var json={};
+        while(arr.length<num){
+            var ranNum=Math.ceil(Math.random()*(up-down))+down;
+            if(!json[ranNum]){
+                json[ranNum]=1;
+                arr.push(ranNum);
+            }
+        }
+        return arr.sort(sortFunction);
+    }
+    function toValue(arr,length){
+        for(var i=0;i<length;i++){
+            $('.ulCon li').eq(i).text(arr[i]);
+        }
+    }
+    function sortFunction(a,b){
+        return a-b;
+    }
+    function copyClick(){
+        var str = arr.join();
+        $('#copyCon').val(str);
+        var copy = $('#copyCon');
+        copy.select();
+        var doc = document.execCommand("Copy");
+        if (doc){
+            //alert('已成功复制到剪贴板！');
+            $.message('成功');
+        }else{
+            $.message({
+                message:'浏览器不支持',
+                type:'error'
+            });
+            //alert('浏览器不支持，请手动复制！');
+            $('#copyCon').show();
+        }
+    }
+</script>
+</html>
